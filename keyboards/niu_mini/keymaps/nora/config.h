@@ -95,6 +95,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_FUNCTION
 
 /* my configs */
-#define TAPPING_TERM 100
+#define TAPPING_TERM 070
 
 #endif
