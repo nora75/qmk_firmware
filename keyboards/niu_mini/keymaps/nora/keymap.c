@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 * ,-----------------------------------------------------------------------------------.
 	 * |  ~   |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |      |
 	 * |------+------+------+------+------+-------------+------+------+------+------+------|
-	 * |      | Vol- | Vol+ | Mute |  F11 |  F12 | Left | Down |  Up  | Right| Sleep| Wake |
+	 * |      | Vol+ | Vol- | Mute |  F11 |  F12 | Left | Down |  Up  | Right| Sleep| Wake |
      * |------+------+------+------+------+------|------+------+------+------+------+------|
 	 * |      |      |      |      |      |      |      | Play |      |      |      |      |
 	 * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 */
 	[1] = LAYOUT_planck_mit(
 		KC_TILD,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  _______,
-		_______,  KC_VOLD, KC_VOLU, KC_MUTE, KC_F11,  KC_F12,  KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_SLEP, KC_WAKE,
+		_______,  KC_VOLU, KC_VOLD, KC_MUTE, KC_F11,  KC_F12,  KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_SLEP, KC_WAKE,
 		_______,  _______, _______, _______, _______, _______, _______, KC_MPLY, _______, _______,  _______, _______,
 		_______,  _______, _______, _______, _______,     _______,      _______, _______, _______,  _______, _______
 	),
@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 * ,-----------------------------------------------------------------------------------.
 	 * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |      |
 	 * |------+------+------+------+------+-------------+------+------+------+------+------|
-	 * |      | PgDn | PgUp |  END | HOME |      |      |   -  |   =  |   [  |   ]  |  \   |
+	 * |      | PgUP | PgDN | HOME |  END |      |      |   -  |   =  |   [  |   ]  |  \   |
 	 * |------+------+------+------+------+------|------+------+------+------+------+------|
 	 * |      |      |      |      |      |      |      |      |      |      |      |      |
 	 * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 */
 	[2] = LAYOUT_planck_mit(
 		 KC_GRV,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
-		_______, KC_PGDN, KC_PGUP, KC_END,  KC_HOME, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
+		_______, KC_PGUP, KC_PGDN, KC_END,  KC_HOME, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______,     _______,      _______, _______, _______, _______, _______
   )
@@ -71,4 +71,4 @@ void matrix_scan_user(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	return true;
 }
-    /* vim: set winwidth=120 */ 
+    /* vim: set nonu : */ 
