@@ -95,7 +95,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_FUNCTION
 
 /* my configs */
-#define TAPPING_TERM 30
+#define TAPPING_TERM 30 /* Time to change mod from tap in MOD-Tap key */
+#define ONESHOT_TIMEOUT 7500  /* Time (in ms) before the one shot key is released */
 
 #endif
 
