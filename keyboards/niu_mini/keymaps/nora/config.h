@@ -15,8 +15,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef MY_CONFIG_H
+#define MY_CONFIG_H
 
 #include "config_common.h"
 
@@ -95,8 +95,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_FUNCTION
 
 /* my configs */
-#define TAPPING_TERM 100 /* Time to change mod from tap in MOD-Tap key? */
+/* tap dance */
+#define TAPPING_TERM 50 /* Time to change mod from tap in MOD-Tap key? */
+/* One Shot */
 #define ONESHOT_TIMEOUT 7500  /* Time (in ms) before the one shot key is released */
+/* Auto Shift */
+#define AUTO_SHIFT_TIMEOUT 150
+#define NO_AUTO_SHIFT_ALPHA //It is not usefull when option is disabled
+/* #define NO_AUTO_SHIFT_SPECIAL */
 
 #endif
 

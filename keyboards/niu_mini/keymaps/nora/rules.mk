@@ -1,4 +1,4 @@
-# MCU name
+
 #MCU = at90usb1287
 MCU = atmega32u4
 
@@ -58,14 +58,17 @@ COMMAND_ENABLE = no        # Commands for debug and configuration
 NKRO_ENABLE = no            # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 BACKLIGHT_ENABLE = no      # Disable keyboard backlight functionality
 MIDI_ENABLE = no            # MIDI controls
-AUDIO_ENABLE = yes           # Audio output on port C6
+AUDIO_ENABLE = no           # Audio output on port C6
 UNICODE_ENABLE = no         # Unicode
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 RGBLIGHT_ENABLE = no        # Disable WS2812 RGB underlight.
 API_SYSEX_ENABLE = no
+AUTO_SHIFT_ENABLE = yes     # Auto Shifted by long tap
+# AUTO_SHIFT_MODIFIERS = yes # Enable Auto Shift for modifiers
+LEADER_KEY_ENABLE = yes
 
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
-SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend
+# SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend
 
 LAYOUTS = ortho_4x12 planck_mit
 LAYOUTS_HAS_RGB = no
