@@ -96,7 +96,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* my configs */
 /* tap dance */
-#define TAPPING_TERM 50 /* Time to change mod from tap in MOD-Tap key? */
+#define TAPPING_TERM 200 /* Time to change mod from tap in MOD-Tap key? */
 /* One Shot */
 #define ONESHOT_TIMEOUT 7500  /* Time (in ms) before the one shot key is released */
 /* Auto Shift */
