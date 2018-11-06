@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------------------------------------------------------------------------------.
      * |     ~    |    F1    |    F2    |    F3    |    F4    |    F5    |    F6    |    F7    |    F8    |    F9    |    F10   |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |          |   Vol-   |   Vol+   |   Mute   |    F11   |   F12    |   Left   |   Down   |    Up    |   Right  |   Sleep  |          |
+     * |          |   Vol-   |   Vol+   |   Mute   |    F11   |   F12    |   Left   |   Down   |    Up    |   Right  |   LEAD   |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
      * |          |          |          |          |          |          |          |   Play   |          |          |          |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [1] = LAYOUT_planck_mit(
             KC_TILD,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  _______,
-            _______,  KC_VOLD, KC_VOLU, KC_MUTE, KC_F11,  KC_F12,  KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_SLEP, _______,
+            _______,  KC_VOLD, KC_VOLU, KC_MUTE, KC_F11,  KC_F12,  KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_LEAD, _______,
             _______,  _______, _______, _______, _______, _______, _______, KC_MPLY, _______, _______,  _______, _______,
             _______,  _______, _______, _______, _______,     _______,      _______, _______, _______,  _______, _______
             ),
@@ -70,7 +70,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void matrix_init_user(void) {
 }
 
+LEADER_EXTERNS();
+
 void matrix_scan_user(void) {
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    /* SEQ_ONE_KEY(KC_F) { */
+    /*   // Anything you can do in a macro. */
+    /*   SEND_STRING("QMK is awesome."); */
+    /* } */
+    /* SEQ_TWO_KEYS(KC_D, KC_D) { */
+    /*   SEND_STRING(SS_LCTRL("a")SS_LCTRL("c")); */
+    /* } */
+    SEQ_TWO_KEYS(KC_Q,KC_ENT) {
+      SEND_STRING(SS_LALT(SS_TAP(X_F4)));
+    }
+    /* SEQ_TWO_KEYS(KC_A, KC_S) { */
+    /*   register_code(KC_LGUI); */
+    /*   register_code(KC_S); */
+    /*   unregister_code(KC_S); */
+    /*   unregister_code(KC_LGUI); */
+    /* } */
+  }
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
