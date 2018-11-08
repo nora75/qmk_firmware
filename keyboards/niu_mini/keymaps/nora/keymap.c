@@ -12,27 +12,28 @@
 /* }; */
 
 #define DEFAULT 0
-#define LOWER 1
-#define UPPER 2
+#define LOWER   1
+#define UPPER   2
+#define SPECIAL 3
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Layer 0
      * ,-----------------------------------------------------------------------------------------------------------------------------------.
-     * |   Esc    |     Q    |     W    |     E    |     R    |     T    |     Y    |     U    |     I    |     O    |     P    |   Bksp   |
+     * |   Esc    |     Q    |     W    |     E    |     R    |     T    |     Y    |     U    |     I    |     O    |     P    |    BS    |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
      * | CTL_Tab  |     A    |     S    |     D    |     F    |     G    |     H    |     J    |     K    |     L    |     ;    |  Enter   |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
      * |Sft_O_Sft |     Z    |     X    |     C    |     V    |     B    |     N    |     M    |     ,    |     .    |     /    |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |KC_NO-RES |          |          |    Alt   |  Layer1  |        Space        |  Layer2  |    GUI   |          |          |          |
+     * |          |          |          |    Alt   |  Layer1  |        Space        |  Layer2  |    GUI   |          |          |          |
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [DEFAULT] = LAYOUT_planck_mit(
-            KC_ESC,                KC_Q,    KC_W,    KC_E,    KC_R,  KC_T,   KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC,
-            LCTL_T(KC_TAB),        KC_A,    KC_S,    KC_D,    KC_F,  KC_G,   KC_H,   KC_J,  KC_K,    KC_L,    KC_SCLN, KC_ENT,
-            LSFT_T(OSM(MOD_LSFT)), KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,   KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
-            TD(TD_NO_RES),         KC_NO,   KC_NO,   KC_LALT, MO(1),     KC_SPC,     MO(2), KC_LGUI, KC_NO,   KC_NO,   KC_NO
+            KC_ESC,                KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,   KC_Y, KC_U,      KC_I,    KC_O,    KC_P,    KC_BSPC,
+            LCTL_T(KC_TAB),        KC_A,    KC_S,    KC_D,    KC_F,      KC_G,   KC_H, KC_J,      KC_K,    KC_L,    KC_SCLN, KC_ENT,
+            LSFT_T(OSM(MOD_LSFT)), KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,   KC_N, KC_M,      KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
+            LT(SPECIAL, KC_NO),    KC_NO,   KC_NO,   KC_LALT, MO(LOWER),    KC_SPC,    MO(UPPER), KC_LGUI, KC_NO,   KC_NO,   KC_NO
             ),
 
     /* Layer 1
@@ -57,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------------------------------------------------------------------------------.
      * |     `    |     1    |     2    |     3    |     4    |     5    |     6    |     7    |     8    |     9    |     0    |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |          |   PgDn   |   PgUp   |   HOME   |    END   |          |     \    |     -    |     =    |  (-[-{   |   )-]-}  |          |
+     * |          |   PgDn   |   PgUp   |   HOME   |    END   |          |     \    |     -    |     =    |    [-{   |    ]-}   |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
      * |          |          |          |          |          |          |          |          |          |          |          |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
@@ -69,7 +70,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             _______, KC_PGDN, KC_PGUP, KC_HOME,  KC_END, _______, KC_BSLS, KC_MINS, KC_EQL,  TD(TD_MY_LBRC), TD(TD_MY_RBRC), _______,
             _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,        _______,        _______,
             _______, _______, _______, _______, _______,     _______,      _______, _______, _______,        _______,        _______
+            ),
+
+    /* Layer 3
+     * ,-----------------------------------------------------------------------------------------------------------------------------------.
+     * |          |          |          |          |          |          |          |          |          |          |          |          |
+     * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
+     * |          |          |          |          |          |          |          |          |          |          |          |          |
+     * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
+     * |          |          |          |          |          |          |          |          |          |          |          |          |
+     * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
+     * |          |          |          |          |          |                     |          |          |          |          |   RESET  |
+     * `-----------------------------------------------------------------------------------------------------------------------------------'
+     */
+    [SPECIAL] = LAYOUT_planck_mit(
+            KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+            KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+            KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+            _______, KC_NO, KC_NO, KC_NO, KC_NO,     KC_NO,      KC_NO, KC_NO, KC_NO, KC_NO, RESET
             )
+
 };
 
 
@@ -84,51 +104,51 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 LEADER_EXTERNS();
 
 void matrix_scan_user(void) {
-  LEADER_DICTIONARY() {
-    leading = false;
-    leader_end();
+    LEADER_DICTIONARY() {
+        leading = false;
+        leader_end();
 
-    /* SEQ_ONE_KEY(KC_F) { */
-    /*   // Anything you can do in a macro. */
-    /*   SEND_STRING("QMK is awesome."); */
-    /* } */
-    /* SEQ_TWO_KEYS(KC_D, KC_D) { */
-    /*   SEND_STRING(SS_LCTRL("a")SS_LCTRL("c")); */
-    /* } */
-    SEQ_ONE_KEY(KC_Q) {
-      SEND_STRING(SS_LALT(SS_TAP(X_F4)));
+        /* SEQ_ONE_KEY(KC_F) { */
+        /*   // Anything you can do in a macro. */
+        /*   SEND_STRING("QMK is awesome."); */
+        /* } */
+        /* SEQ_TWO_KEYS(KC_D, KC_D) { */
+        /*   SEND_STRING(SS_LCTRL("a")SS_LCTRL("c")); */
+        /* } */
+        SEQ_ONE_KEY(KC_Q) {
+            SEND_STRING(SS_LALT(SS_TAP(X_F4)));
+        }
+        /* SEQ_TWO_KEYS(KC_A, KC_S) { */
+        /*   register_code(KC_LGUI); */
+        /*   register_code(KC_S); */
+        /*   unregister_code(KC_S); */
+        /*   unregister_code(KC_LGUI); */
+        /* } */
     }
-    /* SEQ_TWO_KEYS(KC_A, KC_S) { */
-    /*   register_code(KC_LGUI); */
-    /*   register_code(KC_S); */
-    /*   unregister_code(KC_S); */
-    /*   unregister_code(KC_LGUI); */
-    /* } */
-  }
 }
 
 /* bool process_record_user(uint16_t keycode, keyrecord_t *record) { */
-    /* switch(keycode){ */
-    /*     case M_BSDEL: */
-    /*         if (record->event.pressed) { */
-    /*             uint8_t kc = KC_BSPC; */
-    /*             if (record->event.pressed) { */
-    /*                 if (keyboard_report->mods) { */
-    /*                     kc = KC_DEL; */
-    /*                 } */
-    /*                 register_code (kc); */
-    /*                 bsdel_mods = keyboard_report->mods; */
-    /*             } */
-    /*             else { */
-    /*                 if (bsdel_mods) { */
-    /*                     kc = KC_DEL; */
-    /*                 } */
-    /*                 unregister_code (kc); */
-    /*             } */
-    /*         } */
-    /* } */
+/* switch(keycode){ */
+/*     case M_BSDEL: */
+/*         if (record->event.pressed) { */
+/*             uint8_t kc = KC_BSPC; */
+/*             if (record->event.pressed) { */
+/*                 if (keyboard_report->mods) { */
+/*                     kc = KC_DEL; */
+/*                 } */
+/*                 register_code (kc); */
+/*                 bsdel_mods = keyboard_report->mods; */
+/*             } */
+/*             else { */
+/*                 if (bsdel_mods) { */
+/*                     kc = KC_DEL; */
+/*                 } */
+/*                 unregister_code (kc); */
+/*             } */
+/*         } */
+/* } */
 
-    /* return true; */
+/* return true; */
 /* }; */
 
 /* vim: set nonu : */ 
