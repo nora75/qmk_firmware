@@ -1,3 +1,7 @@
+/* Tapping term Functions */
+/* TD_MY_LBRC : Single [ Double { */
+/* TD_MY_RBRC : Single ] Double } */
+
 void dance_my_lbrc_finished(qk_tap_dance_state_t *state, void *user_data) {
   if (state->count == 1) {
     register_code(KC_LSFT);

@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "nora_tap.h"
+#include "nora_lead.h"
 
 /* readability */
 #define _______  KC_TRNS
@@ -26,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
      * |Sft_O_Sft |     Z    |     X    |     C    |     V    |     B    |     N    |     M    |     ,    |     .    |     /    |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |          |          |          |    Alt   |  Layer1  |        Space        |  Layer2  |    GUI   |          |          |          |
+     * |  Special |          |          |    Alt   |   Lower  |        Space        |   Upper  |    GUI   |          |          |          |
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [DEFAULT] = LAYOUT_planck_mit(
@@ -54,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             _______,  _______, _______, _______, _______,     _______,      _______, _______, _______,  _______, _______
             ),
 
-    /* Layer 2 (r_ Indicates RGB Controls)
+    /* Layer 2
      * ,-----------------------------------------------------------------------------------------------------------------------------------.
      * |     `    |     1    |     2    |     3    |     4    |     5    |     6    |     7    |     8    |     9    |     0    |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
@@ -95,37 +96,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* void matrix_init_user(void) { */
 /* } */
-
-/* LEADER Functions */
-/* LEADER Key = <L> */
-/* <L>q : Alt(Meta) + F4 close current window(GUI) */
-
-
-LEADER_EXTERNS();
-
-void matrix_scan_user(void) {
-    LEADER_DICTIONARY() {
-        leading = false;
-        leader_end();
-
-        /* SEQ_ONE_KEY(KC_F) { */
-        /*   // Anything you can do in a macro. */
-        /*   SEND_STRING("QMK is awesome."); */
-        /* } */
-        /* SEQ_TWO_KEYS(KC_D, KC_D) { */
-        /*   SEND_STRING(SS_LCTRL("a")SS_LCTRL("c")); */
-        /* } */
-        SEQ_ONE_KEY(KC_Q) {
-            SEND_STRING(SS_LALT(SS_TAP(X_F4)));
-        }
-        /* SEQ_TWO_KEYS(KC_A, KC_S) { */
-        /*   register_code(KC_LGUI); */
-        /*   register_code(KC_S); */
-        /*   unregister_code(KC_S); */
-        /*   unregister_code(KC_LGUI); */
-        /* } */
-    }
-}
 
 /* bool process_record_user(uint16_t keycode, keyrecord_t *record) { */
 /* switch(keycode){ */
