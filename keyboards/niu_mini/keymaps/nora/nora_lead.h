@@ -19,6 +19,12 @@ void matrix_scan_user(void) {
         SEQ_ONE_KEY(KC_Q) {
             SEND_STRING(SS_LALT(SS_TAP(X_F4)));
         }
+        SEQ_ONE_KEY(KC_F1) {
+            SEND_STRING(SS_LALT(SS_TAP(X_F4)));
+        }
+        SEQ_ONE_KEY(KC_W) {
+            SEND_STRING(SS_LCTRL("s"));
+        }
         /* SEQ_TWO_KEYS(KC_A, KC_S) { */
         /*   register_code(KC_LGUI); */
         /*   register_code(KC_S); */
