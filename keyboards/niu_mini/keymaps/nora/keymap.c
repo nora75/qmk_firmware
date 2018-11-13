@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_ESC,                KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,   KC_Y, KC_U,      KC_I,    KC_O,    KC_P,    KC_BSPC,
             LCTL_T(KC_TAB),        KC_A,    KC_S,    KC_D,    KC_F,      KC_G,   KC_H, KC_J,      KC_K,    KC_L,    KC_SCLN, KC_ENT,
             LSFT_T(OSM(MOD_LSFT)), KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,   KC_N, KC_M,      KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
-            MO(SPECIAL),           KC_NO,   KC_NO,   KC_LALT, MO(LOWER),    KC_SPC,    MO(UPPER), KC_LGUI, KC_NO,   KC_NO,   KC_NO
+            TG(SPECIAL),           KC_NO,   KC_NO,   KC_LALT, MO(LOWER),    KC_SPC,    MO(UPPER), KC_LGUI, KC_NO,   KC_NO,   KC_NO
             ),
 
     /* Layer 1
@@ -74,21 +74,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             ),
 
     /* Layer 3
+     * MS = Mouse, MSW = Mouse Wheel
      * ,-----------------------------------------------------------------------------------------------------------------------------------.
      * |          |          |          |          |          |          |          |          |          |          |          |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |          |          |          |          |          |          |          |          |          |          |          |          |
+     * |          |          |          |          |   MSWUp  |          |  MSLeft  |  MSDown  |   MSUp   |  MSRight |          |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |          |          |          |          |          |          |          |          |          |          |          |          |
+     * |          |          |          |          |          |  MSWDown |          |          |          |          |          |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |          |          |          |          |          |                     |          |          |          |          |   RESET  |
+     * |  DEFAULT |          |          |          |          |    Mouse Button1    |          |          |          |          |   RESET  |
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [SPECIAL] = LAYOUT_planck_mit(
-            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,    KC_NO,     KC_NO, KC_NO, KC_NO, KC_NO, RESET
+            KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,
+            KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NO, KC_NO,
+            KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,
+            _______, KC_NO, KC_NO, KC_NO, KC_NO,    KC_BTN1,     KC_NO,   KC_NO,   KC_NO,   KC_NO, RESET
             )
 
 };
