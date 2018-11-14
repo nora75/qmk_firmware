@@ -2,6 +2,8 @@
 /* TD_MY_LBRC : Single [ Double { */
 /* TD_MY_RBRC : Single ] Double } */
 
+#include QMK_KEYBOARD_H
+
 void dance_my_lbrc_finished(qk_tap_dance_state_t *state, void *user_data) {
   if (state->count == 1) {
     register_code(KC_LSFT);
@@ -52,7 +54,6 @@ void dance_my_rbrc_reset(qk_tap_dance_state_t *state, void *user_data) {
 
 /* Tap Dance Keys Declarations */
 enum {
-  /* TD_NO_RES = 0, */
   TD_MY_LBRC = 0,
   TD_MY_RBRC
 };
@@ -60,7 +61,6 @@ enum {
 /* Tap Dance Definitions */
 qk_tap_dance_action_t tap_dance_actions[] = {
   /* Tap once for NO, twice for RESET */
-  /* [TD_NO_RES]  = ACTION_TAP_DANCE_DOUBLE(KC_NO, reset_keyboard()), */
   [TD_MY_LBRC] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC,KC_LCBR),
 
   [TD_MY_RBRC] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC,KC_RCBR),
