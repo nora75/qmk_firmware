@@ -16,6 +16,9 @@
 #define LOWER   1
 #define UPPER   2
 #define SPECIAL 3
+/* #define VIM_N 10 */
+/* #define VIM_V 10 */
+/* #define VIM_I 10 */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -68,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [UPPER] = LAYOUT_planck_mit(
             _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,           KC_0,           _______,
-            _______, KC_PGDN, KC_PGUP, KC_HOME,  KC_END, _______, KC_BSLS, KC_MINS, KC_EQL,  TD(TD_MY_LBRC), TD(TD_MY_RBRC), _______,
+            _______, KC_PGDN, KC_PGUP, KC_HOME,  KC_END, KC_GRV,  KC_BSLS, KC_MINS, KC_EQL,  TD(TD_MY_LBRC), TD(TD_MY_RBRC), _______,
             _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,        _______,        _______,
             _______, _______, _______, _______, _______,     _______,      _______, _______, _______,        _______,        _______
             ),
@@ -89,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             _______, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, _______,
             _______, KC_NO, KC_NO, KC_NO, KC_WH_D, KC_NO,   KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NO, _______,
             _______, KC_NO, KC_NO, KC_NO, KC_NO,   KC_WH_U, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,
-            _______, KC_NO, KC_NO, KC_NO, KC_NO,      KC_BTN1,       KC_NO,   KC_NO,   KC_NO,   KC_NO, RESET
+            _______, KC_NO, KC_NO, _______, KC_NO,      KC_BTN1,       KC_NO,   _______,   KC_NO,   KC_NO, RESET
             )
 
 };
