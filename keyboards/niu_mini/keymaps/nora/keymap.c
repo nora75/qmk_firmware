@@ -17,8 +17,8 @@
 #define UPPER   2
 #define SPECIAL 3
 /* #define VIM_N 10 */
-/* #define VIM_V 10 */
-/* #define VIM_I 10 */
+/* #define VIM_V 11 */
+/* #define VIM_I 12 */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 

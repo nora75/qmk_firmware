@@ -42,9 +42,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* tap dance */
 #define TAPPING_TERM 180 /* Time to change mod from tap in MOD-Tap key? */
 /* One Shot */
-#define ONESHOT_TIMEOUT 7500  /* Time (in ms) before the one shot key is released */
+#define ONESHOT_TIMEOUT 8000  /* Time (in ms) before the one shot key is released */
 /* Auto Shift */
-#define AUTO_SHIFT_TIMEOUT 180
+#define AUTO_SHIFT_TIMEOUT 175
 #define NO_AUTO_SHIFT_ALPHA /* It is not usefull when option is disabled */
 /* #define NO_AUTO_SHIFT_SPECIAL */
 /* LEADER KEY */
