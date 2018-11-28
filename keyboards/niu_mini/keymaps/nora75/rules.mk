@@ -65,8 +65,9 @@ RGBLIGHT_ENABLE = no        # Disable WS2812 RGB underlight.
 API_SYSEX_ENABLE = no
 AUTO_SHIFT_ENABLE = yes     # Auto Shifted by long tap
 # AUTO_SHIFT_MODIFIERS = yes # Enable Auto Shift for modifiers
-LEADER_ENABLE = yes
-TAP_DANCE_ENABLE = yes
+LEADER_ENABLE = yes # Like vim's leader key
+TAP_DANCE_ENABLE = yes # Tap dance that change keycode by how many tapping
+KEY_LOCK_ENABLE = yes # Hold down any key till press again this key
 
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
 # SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend

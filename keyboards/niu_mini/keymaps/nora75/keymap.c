@@ -8,14 +8,17 @@
 
 /* static bool bsdel_mods = false; */
 
-/* enum custom_keycodes { */
-/*     M_BSDEL = SAFE_RANGE, */
-/* }; */
+enum custom_keycodes {
+    /* M_BSDEL = SAFE_RANGE, */
+    DYNAMIC_MACRO_RANGE = SAFE_RANGE,
+    MOUSE_ON
+};
 
 #define DEFAULT 0
 #define LOWER   1
 #define UPPER   2
 #define SPECIAL 3
+#define MOUSE   4
 /* #define VIM_N 10 */
 /* #define VIM_V 11 */
 /* #define VIM_I 12 */
@@ -37,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_ESC,                KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,   KC_Y, KC_U,      KC_I,    KC_O,    KC_P,    KC_BSPC,
             LCTL_T(KC_TAB),        KC_A,    KC_S,    KC_D,    KC_F,      KC_G,   KC_H, KC_J,      KC_K,    KC_L,    KC_SCLN, KC_ENT,
             LSFT_T(OSM(MOD_LSFT)), KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,   KC_N, KC_M,      KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
-            TG(SPECIAL),           KC_NO,   KC_NO,   KC_LALT, MO(LOWER),    KC_SPC,    MO(UPPER), KC_LGUI, KC_NO,   KC_NO,   KC_NO
+            LT(SPECIAL, TG(MOUSE)),           KC_NO,   KC_NO,   KC_LALT, MO(LOWER),    KC_SPC,    MO(UPPER), KC_LGUI, KC_NO,   KC_NO,   KC_NO
             ),
 
     /* Layer 1
@@ -64,34 +67,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
      * |          |   PgDn   |   PgUp   |   HOME   |    END   |     `    |     \    |     -    |     =    |    [-{   |    ]-}   |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |          |          |          |          |          |          |          |          |          |          |          |          |
+     * |          |          |          |          |  Insert  |          |          |          |          |          |          |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
      * |          |          |          |          |          |                     |          |          |          |          |          |
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [UPPER] = LAYOUT_planck_mit(
-            _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,           KC_0,           _______,
-            _______, KC_PGDN, KC_PGUP, KC_HOME,  KC_END, KC_GRV,  KC_BSLS, KC_MINS, KC_EQL,  TD(TD_MY_LBRC), TD(TD_MY_RBRC), _______,
-            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,        _______,        _______,
-            _______, _______, _______, _______, _______,     _______,      _______, _______, _______,        _______,        _______
+            _______, KC_1,    KC_2,    KC_3,    KC_4,   KC_5,    KC_6,    KC_7,    KC_8,    KC_9,           KC_0,           _______,
+            _______, KC_PGDN, KC_PGUP, KC_HOME, KC_END, KC_GRV,  KC_BSLS, KC_MINS, KC_EQL,  TD(TD_MY_LBRC), TD(TD_MY_RBRC), _______,
+            _______, _______, _______, _______, KC_INS, _______, _______, _______, _______, _______,        _______,        _______,
+            _______, _______, _______, _______, _______,     _______,      _______, _______, _______,       _______,        _______
             ),
 
     /* Layer 3
-     * MS = Mouse, MSW = Mouse Wheel
+     * MS = Mouse, MSW = Mouse Wheel, MSB = Mouse Button
      * ,-----------------------------------------------------------------------------------------------------------------------------------.
      * |          |          |          |          |          |          |          |          |          |          |          |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |          |          |          |          |   MSWUp  |          |  MSLeft  |  MSDown  |   MSUp   |  MSRight |          |          |
+     * |          |          |          |          |          |          |          |          |          |          |          |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |          |          |          |          |          |  MSWDown |          |          |          |          |          |          |
+     * |          |          |          |          |          |          |          |          |          |          |          |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |  DEFAULT |          |          |          |          |    Mouse Button1    |          |          |          |          |   RESET  |
+     * |  DEFAULT |          |          |          |          |                     |          |          |          |          |   RESET  |
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [SPECIAL] = LAYOUT_planck_mit(
-            _______, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, _______,
-            _______, KC_NO, KC_NO, KC_NO, KC_WH_D, KC_NO,   KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_NO, _______,
-            _______, KC_NO, KC_NO, KC_NO, KC_NO,   KC_WH_U, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,
+            _______, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, _______,
+            _______, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, _______,
+            _______, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO, KC_NO, KC_NO,
+            _______, KC_NO, KC_NO, _______, KC_NO,      KC_NO,   KC_NO, _______, KC_NO, KC_NO, RESET
+            ),
+
+    /* Layer 4
+     * ,-----------------------------------------------------------------------------------------------------------------------------------.
+     * |          |          |          |          |          |          |          |          |          |          |          |          |
+     * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
+     * |          |          |          |          |   MSWUp  |   MSB2   |  MSLeft  |  MSDown  |   MSUp   |  MSRight |          |          |
+     * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
+     * |          |          |          |          |          |  MSWDown |          |          |          |          |          |          |
+     * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
+     * |  DEFAULT |          |          |          |          |         MSB1        |          |          |          |          |   RESET  |
+     * `-----------------------------------------------------------------------------------------------------------------------------------'
+     */
+    [MOUSE] = LAYOUT_planck_mit(
+            _______, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,     KC_NO,   KC_NO, _______,
+            _______, KC_NO, KC_NO, KC_NO,   KC_WH_D, KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_U,   KC_MS_R, KC_NO, _______,
+            _______, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_WH_U, KC_NO,   KC_NO,   KC_NO,     KC_NO,   KC_NO, KC_NO,
             _______, KC_NO, KC_NO, _______, KC_NO,      KC_BTN1,       KC_NO,   _______,   KC_NO,   KC_NO, RESET
             )
 
@@ -101,28 +122,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* void matrix_init_user(void) { */
 /* } */
 
-/* bool process_record_user(uint16_t keycode, keyrecord_t *record) { */
-/* switch(keycode){ */
-/*     case M_BSDEL: */
-/*         if (record->event.pressed) { */
-/*             uint8_t kc = KC_BSPC; */
-/*             if (record->event.pressed) { */
-/*                 if (keyboard_report->mods) { */
-/*                     kc = KC_DEL; */
-/*                 } */
-/*                 register_code (kc); */
-/*                 bsdel_mods = keyboard_report->mods; */
-/*             } */
-/*             else { */
-/*                 if (bsdel_mods) { */
-/*                     kc = KC_DEL; */
-/*                 } */
-/*                 unregister_code (kc); */
-/*             } */
-/*         } */
-/* } */
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch(keycode){
+        /*     case M_BSDEL: */
+        /*         if (record->event.pressed) { */
+        /*             uint8_t kc = KC_BSPC; */
+        /*             if (record->event.pressed) { */
+        /*                 if (keyboard_report->mods) { */
+        /*                     kc = KC_DEL; */
+        /*                 } */
+        /*                 register_code (kc); */
+        /*                 bsdel_mods = keyboard_report->mods; */
+        /*             } */
+        /*             else { */
+        /*                 if (bsdel_mods) { */
+        /*                     kc = KC_DEL; */
+        /*                 } */
+        /*                 unregister_code (kc); */
+        /*             } */
+        case MOUSE_ON:
+            if (record->event.pressed) {
+                layer_on(MOUSE);
+                return true;
+            }
+        default:
+            return true;
+    }
+}
 
-/* return true; */
-/* }; */
+    /* return true; */
+    /* }; */
 
 /* vim: set nonu : */ 
