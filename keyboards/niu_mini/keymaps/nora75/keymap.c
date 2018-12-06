@@ -1,18 +1,10 @@
 #include QMK_KEYBOARD_H
+#include "custom_keys.h"
+/* #include "dynamic_macro.h" */
 #include "nora_tap.h"
 #include "nora_lead.h"
 
-/* readability */
-#define _______  KC_TRNS
-#define XXXXXXX  KC_NO
-
 /* static bool bsdel_mods = false; */
-
-/* enum custom_keycodes { */
-    /* M_BSDEL = SAFE_RANGE, */
-    /* DYNAMIC_MACRO_RANGE = SAFE_RANGE */
-    /* MY_MON = SAFE_RANGE */
-/* }; */
 
 #define _DEFAULT 0
 #define _LOWER   1
@@ -37,15 +29,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [_DEFAULT] = LAYOUT_planck_mit(
-            KC_ESC,                KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,   KC_Y, KC_U,      KC_I,    KC_O,    KC_P,    KC_BSPC,
-            LCTL_T(KC_TAB),        KC_A,    KC_S,    KC_D,    KC_F,      KC_G,   KC_H, KC_J,      KC_K,    KC_L,    KC_SCLN, KC_ENT,
-            LSFT_T(OSM(MOD_LSFT)), KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,   KC_N, KC_M,      KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
-            TG(_SPECIAL),           KC_NO,   KC_NO,   KC_LALT, MO(_LOWER),    KC_SPC,    MO(_RAISE), KC_LGUI, KC_NO,   KC_NO,   TG(_LOCK)
+            KC_ESC,                KC_Q,  KC_W,  KC_E,    KC_R,       KC_T,   KC_Y, KC_U,       KC_I,    KC_O,   KC_P,    KC_BSPC,
+            LCTL_T(KC_TAB),        KC_A,  KC_S,  KC_D,    KC_F,       KC_G,   KC_H, KC_J,       KC_K,    KC_L,   KC_SCLN, KC_ENT,
+            LSFT_T(OSM(MOD_LSFT)), KC_Z,  KC_X,  KC_C,    KC_V,       KC_B,   KC_N, KC_M,       KC_COMM, KC_DOT, KC_SLSH, KC_QUOT,
+            TG(_SPECIAL),          KC_NO, KC_NO, KC_LALT, MO(_LOWER),    KC_SPC,    MO(_RAISE), KC_LGUI, KC_NO,  KC_NO,   TG(_LOCK)
             ),
 
     /* Layer 1
      * ,-----------------------------------------------------------------------------------------------------------------------------------.
-     * |     ~    |    F1    |    F2    |    F3    |    F4    |    F5    |    F6    |    F7    |    F8    |    F9    |    F10   |          |
+     * |     ~    |    F1    |    F2    |    F3    |    F4    |    F5    |    F6    |    F7    |    F8    |    F9    |    F10   |   Del    |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
      * |          |   Vol-   |   Vol+   |   Mute   |    F11   |   F12    |   Left   |   Down   |    Up    |   Right  |  LEADER  |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
@@ -55,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [_LOWER] = LAYOUT_planck_mit(
-            KC_TILD,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  _______,
+            KC_TILD,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_DEL,
             _______,  KC_VOLD, KC_VOLU, KC_MUTE, KC_F11,  KC_F12,  KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_LEAD, _______,
             _______,  _______, _______, _______, _______, _______, _______, KC_MPLY, _______, _______,  _______, _______,
             _______,  _______, _______, _______, _______,     _______,      _______, _______, _______,  _______, _______
@@ -73,10 +65,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [_RAISE] = LAYOUT_planck_mit(
-            _______, KC_1,    KC_2,    KC_3,    KC_4,   KC_5,    KC_6,    KC_7,    KC_8,    KC_9,           KC_0,           _______,
-            _______, KC_PGDN, KC_PGUP, KC_HOME, KC_END, KC_GRV,  KC_BSLS, KC_MINS, KC_EQL,  TD(TD_MY_LBRC), TD(TD_MY_RBRC), _______,
-            _______, _______, _______, _______, KC_INS, _______, _______, _______, _______, _______,        _______,        _______,
-            _______, _______, _______, _______, _______,     _______,      _______, _______, _______,       _______,        _______
+            _______, KC_1,    KC_2,    KC_3,    KC_4,   KC_5,    KC_6,    KC_7,    KC_8,    KC_9,        KC_0,        _______,
+            _______, KC_PGDN, KC_PGUP, KC_HOME, KC_END, KC_GRV,  KC_BSLS, KC_MINS, KC_EQL,  TD(TD_LBRC), TD(TD_RBRC), _______,
+            _______, _______, _______, _______, KC_INS, _______, _______, _______, _______, _______,     _______,     _______,
+            _______, _______, _______, _______, _______,     _______,     _______, _______, _______,     _______,     _______
             ),
 
     /* Layer 3
@@ -122,6 +114,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* } */
 
 /* bool process_record_user(uint16_t keycode, keyrecord_t *record) { */
+    /* if (!process_record_dynamic_macro(keycode, record)) { */
+    /*     return false; */
+    /* } */
 /*     switch(keycode){ */
             /*         case MOUSE: */
             /*             if (record->event.pressed) { */
