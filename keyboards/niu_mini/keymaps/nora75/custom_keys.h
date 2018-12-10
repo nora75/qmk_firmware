@@ -10,6 +10,8 @@ enum {
   TD_LBRC = 0,
   TD_RBRC,
   TD_DSTART,
-  TD_DPLAY
+  TD_DPLAY,
+  TD_LOCK,
+  TD_RESET
 };
 

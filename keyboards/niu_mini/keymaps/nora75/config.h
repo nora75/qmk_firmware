@@ -1,6 +1,6 @@
 /*
     NORA75:
-   This file is my config.h file
+    This file is my config.h file
 */
 
 #ifndef MY_CONFIG_H

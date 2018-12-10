@@ -1,8 +1,5 @@
 #include QMK_KEYBOARD_H
 #include "custom_keys.h"
-/* #include "dynamic_macro.h" */
-#include "nora_tap.h"
-#include "nora_lead.h"
 
 /* static bool bsdel_mods = false; */
 
@@ -15,6 +12,10 @@
 /* #define VIM_V 11 */
 /* #define VIM_I 12 */
 
+/* #include "dynamic_macro.h" */
+#include "nora_tap.h"
+#include "nora_lead.h"
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Layer 0
@@ -23,16 +24,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
      * | CTL_Tab  |     A    |     S    |     D    |     F    |     G    |     H    |     J    |     K    |     L    |     ;    |  Enter   |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |Sft_O_Sft |     Z    |     X    |     C    |     V    |     B    |     N    |     M    |     ,    |     .    |     /    |    '     |
+     * | Sft_O_Sft|     Z    |     X    |     C    |     V    |     B    |     N    |     M    |     ,    |     .    |     /    |    '     |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |  SPECIAL |          |          |    Alt   |   Lower  |        Space        |   RAISE  |    GUI   |          |          |   _LOCK  |
+     * |  SPECIAL |          |          |    Alt   |   Lower  |        Space        |   RAISE  |    GUI   |          |          |  TD_LOCK |
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [_DEFAULT] = LAYOUT_planck_mit(
-            KC_ESC,                KC_Q,  KC_W,  KC_E,    KC_R,       KC_T,   KC_Y, KC_U,       KC_I,    KC_O,   KC_P,    KC_BSPC,
-            LCTL_T(KC_TAB),        KC_A,  KC_S,  KC_D,    KC_F,       KC_G,   KC_H, KC_J,       KC_K,    KC_L,   KC_SCLN, KC_ENT,
-            LSFT_T(OSM(MOD_LSFT)), KC_Z,  KC_X,  KC_C,    KC_V,       KC_B,   KC_N, KC_M,       KC_COMM, KC_DOT, KC_SLSH, KC_QUOT,
-            TG(_SPECIAL),          KC_NO, KC_NO, KC_LALT, MO(_LOWER),    KC_SPC,    MO(_RAISE), KC_LGUI, KC_NO,  KC_NO,   TG(_LOCK)
+            KC_ESC,                KC_Q,    KC_W,    KC_E,    KC_R,       KC_T,   KC_Y, KC_U,       KC_I,    KC_O,     KC_P,    KC_BSPC,
+            LCTL_T(KC_TAB),        KC_A,    KC_S,    KC_D,    KC_F,       KC_G,   KC_H, KC_J,       KC_K,    KC_L,     KC_SCLN, KC_ENT,
+            LSFT_T(OSM(MOD_LSFT)), KC_Z,    KC_X,    KC_C,    KC_V,       KC_B,   KC_N, KC_M,       KC_COMM, KC_DOT,   KC_SLSH, KC_QUOT,
+            TG(_SPECIAL),          XXXXXXX, XXXXXXX, KC_LALT, MO(_LOWER),    KC_SPC,    MO(_RAISE), KC_LGUI, XXXXXXX,  XXXXXXX, TD(TD_LOCK)
             ),
 
     /* Layer 1
@@ -84,10 +85,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [_SPECIAL] = LAYOUT_planck_mit(
-            _______, KC_NO, KC_NO, KC_NO,   RESET,   KC_NO,   KC_NO,   KC_NO,   KC_NO,     KC_NO,   KC_NO, _______,
-            _______, KC_NO, KC_NO, KC_NO,   KC_WH_D, KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_U,   KC_MS_R, KC_NO, _______,
-            _______, KC_NO, KC_NO, KC_NO,   KC_NO,   KC_WH_U, KC_NO,   KC_NO,   KC_NO,     KC_NO,   KC_NO, KC_NO,
-            _______, KC_NO, KC_NO, _______, KC_NO,      KC_BTN1,       KC_NO,   _______,   KC_NO,   KC_NO, _______
+            _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+            _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_D, KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX, _______,
+            _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+            _______, XXXXXXX, XXXXXXX, _______, XXXXXXX,      KC_BTN1,     XXXXXXX, _______, XXXXXXX, XXXXXXX, TD(TD_RESET)
             ),
 
     /* Layer 4
@@ -102,10 +103,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [_LOCK] = LAYOUT_planck_mit(
-            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,    KC_NO,     KC_NO, KC_NO, KC_NO, KC_NO, _______
+            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(_DEFAULT)
             )
 
 };
