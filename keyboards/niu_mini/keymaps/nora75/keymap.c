@@ -7,8 +7,7 @@ You want to know more about these custom my keys, read the files of my directory
 
 #include QMK_KEYBOARD_H
 /* #include "dynamic_macro.h" */
-/* #include "nora_autoshift.h" */
-#include "nora_tap.h"
+#include "nora_autoshift.h"
 #include "nora_lead.h"
 #include "nora_macro.h"
 
@@ -27,6 +26,16 @@ You want to know more about these custom my keys, read the files of my directory
 /* #define VIM_N 10 */
 /* #define VIM_V 11 */
 /* #define VIM_I 12 */
+
+/* Tap Dance Keys Declarations */
+enum {
+    TD_LBRC,
+    TD_RBRC,
+    TD_DSTART,
+    TD_DPLAY,
+    TD_LOCK,
+    TD_RESET
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -115,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [_LOCK] = LAYOUT_planck_mit(
-            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+            XXXXXXX, XXXXXXX, MY_2, XXXXXXX, XXXXXXX, XXXXXXX, MY_6, MY_7, MY_8, MY_9, MY_0, XXXXXXX,
             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(_DEFAULT)
@@ -163,3 +172,76 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* } */
 /* return true; */
 /* } */
+
+/* void dance_my_lbrc_finished(qk_tap_dance_state_t *state, void *user_data) { */
+/*   if (state->count == 1) { */
+/*     register_code(KC_LSFT); */
+/*     register_code(KC_9); */
+/*   } else if (state->count == 2) { */
+/*     register_code(KC_LBRC); */
+/*   } else { */
+/*     register_code(KC_LSFT); */
+/*     register_code(KC_LBRC); */
+/*   } */
+/* } */
+
+/* void dance_my_lbrc_reset(qk_tap_dance_state_t *state, void *user_data) { */
+/*   if (state->count == 1) { */
+/*     unregister_code(KC_LSFT); */
+/*     unregister_code(KC_9); */
+/*   } else if (state->count == 2) { */
+/*     unregister_code(KC_LBRC); */
+/*   } else { */
+/*     unregister_code(KC_LSFT); */
+/*     unregister_code(KC_LBRC); */
+/*   } */
+/* } */
+
+/* void dance_my_rbrc_finished(qk_tap_dance_state_t *state, void *user_data) { */
+/*   if (state->count == 1) { */
+/*     register_code(KC_LSFT); */
+/*     register_code(KC_0); */
+/*   } else if (state->count == 2) { */
+/*     register_code(KC_RBRC); */
+/*   } else { */
+/*     register_code(KC_LSFT); */
+/*     register_code(KC_RBRC); */
+/*   } */
+/* } */
+
+/* void dance_my_rbrc_reset(qk_tap_dance_state_t *state, void *user_data) { */
+/*   if (state->count == 1) { */
+/*     unregister_code(KC_LSFT); */
+/*     unregister_code(KC_0); */
+/*   } else if (state->count == 2) { */
+/*     unregister_code(KC_RBRC); */
+/*   } else { */
+/*     unregister_code(KC_LSFT); */
+/*     unregister_code(KC_RBRC); */
+/*   } */
+/* } */
+
+void dance_td_lock(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        layer_clear();
+        layer_on(_LOCK);
+    }
+}
+
+void dance_td_reset(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 2) {
+        reset_keyboard();
+    }
+}
+
+/* Tap Dance Definitions */
+qk_tap_dance_action_t tap_dance_actions[] = {
+    [TD_LBRC] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC,KC_LCBR),
+    [TD_RBRC] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC,KC_RCBR),
+    [TD_LOCK] = ACTION_TAP_DANCE_FN(dance_td_lock),
+    [TD_RESET] = ACTION_TAP_DANCE_FN(dance_td_reset)
+        /* [TD_DSTART] = ACTION_TAP_DANCE_DOUBLE(DYN_REC_START1,DYN_REC_START2), */
+        /* [TD_DPLAY]  = ACTION_TAP_DANCE_DOUBLE(DYN_MACRO_PLAY1,DYN_MACRO_PLAY2), */
+        /* [TD_LBRC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_my_lbrc_finished, dance_my_lbrc_reset), */
+        /* [TD_RBRC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_my_rbrc_finished, dance_my_rbrc_reset), */
+ };

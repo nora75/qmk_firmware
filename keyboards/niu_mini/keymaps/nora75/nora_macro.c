@@ -21,37 +21,37 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return true;
             break;
-        case MY_LBRC:
-            keycode = KC_RBRC;
-            break;
-        case MY_RBRC:
-            keycode = KC_BSLS;
-            break;
-        case MY_QUOT:
-            register_code(KC_LSFT);
-            keycode = KC_7;
-        case MY_SCLN:
-            keycode = KC_SCLN;
-        case MY_BSLS:
-            keycode = JP_BSLS;
-        case MY_TILD:
-            register_code(KC_LSFT);
-            keycode = KC_EQL;
-        case MY_GRV:
-            register_code(KC_LSFT);
-            keycode = KC_LBRC;
-        case MY_MINUS:
-            keycode = KC_MINUS;
-        case MY_EQL:
-            register_code(KC_LSFT);
-            keycode = MINUS;
-            if (record->event.pressed) {
-                my_autoshift_flush();
-                my_autoshift_on(keycode);
-            } else {
-                my_autoshift_flush();
-            }
-            return true;
+        /* case MY_LBRC: */
+        /*     keycode = KC_RBRC; */
+        /*     break; */
+        /* case MY_RBRC: */
+        /*     keycode = KC_BSLS; */
+        /*     break; */
+        /* case MY_QUOT: */
+        /*     register_code(KC_LSFT); */
+        /*     keycode = KC_7; */
+        /* case MY_SCLN: */
+        /*     keycode = KC_SCLN; */
+        /* case MY_BSLS: */
+        /*     keycode = JP_BSLS; */
+        /* case MY_TILD: */
+        /*     register_code(KC_LSFT); */
+        /*     keycode = KC_EQL; */
+        /* case MY_GRV: */
+        /*     register_code(KC_LSFT); */
+        /*     keycode = KC_LBRC; */
+        /* case MY_MINUS: */
+        /*     keycode = KC_MINUS; */
+        /* case MY_EQL: */
+        /*     register_code(KC_LSFT); */
+        /*     keycode = KC_MINUS; */
+        /*     if (record->event.pressed) { */
+        /*         my_autoshift_flush(); */
+        /*         my_autoshift_on(keycode); */
+        /*     } else { */
+        /*         my_autoshift_flush(); */
+        /*     } */
+        /*     return true; */
         default:
             return true;
             break;
