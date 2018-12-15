@@ -1,6 +1,7 @@
 /*
-    NORA75:
-    This file is my config.h file
+NORA75:
+This file is my config.h file
+This file written many options.
 */
 
 #ifndef MY_CONFIG_H
@@ -45,5 +46,3 @@
 #define MOUSEKEY_WHEEL_TIME_TO_MAX 40
 
 #endif
-
-/* vim: set nonu: */ 

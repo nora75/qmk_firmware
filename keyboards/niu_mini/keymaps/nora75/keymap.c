@@ -1,20 +1,32 @@
+/*
+NORA75:
+This file is my keymap.c file.
+This file declare keys on keyboard.
+You want to know more about these custom my keys, read the files of my directory.
+*/
+
 #include QMK_KEYBOARD_H
-#include "custom_keys.h"
+/* #include "dynamic_macro.h" */
+/* #include "nora_autoshift.h" */
+#include "nora_tap.h"
+#include "nora_lead.h"
+#include "nora_macro.h"
 
 /* static bool bsdel_mods = false; */
+/* static bool bs_del_was_shifted = false; */
+/* static bool jp_us_is_switched = false; */
 
-#define _DEFAULT 0
-#define _LOWER   1
-#define _RAISE   2
-#define _SPECIAL 3
-#define _LOCK    4
+#define _DEFAULT  0
+#define _LOWER    1
+#define _RAISE    2
+#define _SPECIAL  3
+#define _LOCK     4
+/* #define _JDEFAULT 5 */
+/* #define _JLOWER   6 */
+/* #define _JRAISE   7 */
 /* #define VIM_N 10 */
 /* #define VIM_V 11 */
 /* #define VIM_I 12 */
-
-/* #include "dynamic_macro.h" */
-#include "nora_tap.h"
-#include "nora_lead.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -115,41 +127,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* } */
 
 /* bool process_record_user(uint16_t keycode, keyrecord_t *record) { */
-    /* if (!process_record_dynamic_macro(keycode, record)) { */
-    /*     return false; */
-    /* } */
-/*     switch(keycode){ */
-            /*         case MOUSE: */
-            /*             if (record->event.pressed) { */
-            /*                 layer_on(MOUSE); */
-            /*                 update_tri_layer(MOUSE, RAISE, SPECIAL); */
-            /*             } else { */
-            /*                 layer_off(MOUSE); */
-            /*                 update_tri_layer(MOUSE, RAISE, SPECIAL); */
-            /*             } */
-            /*             return false; */
-            /*             break; */
-            /*         default: */
-            /*             return true; */
-            /*             break; */
-            /*             case M_BSDEL: */
-            /*                 if (record->event.pressed) { */
-            /*                     uint8_t kc = KC_BSPC; */
-            /*                     if (record->event.pressed) { */
-            /*                         if (keyboard_report->mods) { */
-            /*                             kc = KC_DEL; */
-            /*                         } */
-            /*                         register_code (kc); */
-            /*                         bsdel_mods = keyboard_report->mods; */
-            /*                     } */
-            /*                     else { */
-            /*                         if (bsdel_mods) { */
-            /*                             kc = KC_DEL; */
-            /*                         } */
-            /*                         unregister_code (kc); */
-            /*                     } */
-    /* } */
-    /* return true; */
+/* if (!process_record_dynamic_macro(keycode, record)) { */
+/*     return false; */
 /* } */
-
-/* vim: set nonu : */ 
+/*     switch(keycode){ */
+/*         case MOUSE: */
+/*             if (record->event.pressed) { */
+/*                 layer_on(MOUSE); */
+/*                 update_tri_layer(MOUSE, RAISE, SPECIAL); */
+/*             } else { */
+/*                 layer_off(MOUSE); */
+/*                 update_tri_layer(MOUSE, RAISE, SPECIAL); */
+/*             } */
+/*             return false; */
+/*             break; */
+/*         default: */
+/*             return true; */
+/*             break; */
+/*             case M_BSDEL: */
+/*                 if (record->event.pressed) { */
+/*                     uint8_t kc = KC_BSPC; */
+/*                     if (record->event.pressed) { */
+/*                         if (keyboard_report->mods) { */
+/*                             kc = KC_DEL; */
+/*                         } */
+/*                         register_code (kc); */
+/*                         bsdel_mods = keyboard_report->mods; */
+/*                     } */
+/*                     else { */
+/*                         if (bsdel_mods) { */
+/*                             kc = KC_DEL; */
+/*                         } */
+/*                         unregister_code (kc); */
+/*                     } */
+/* } */
+/* return true; */
+/* } */

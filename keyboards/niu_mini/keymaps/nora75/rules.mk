@@ -74,5 +74,3 @@ KEY_LOCK_ENABLE = yes # Hold down any key till press again this key
 
 LAYOUTS = ortho_4x12 planck_mit
 LAYOUTS_HAS_RGB = no
-
-# vim: set nonu :
