@@ -1,13 +1,14 @@
-# Author
+# Introduction
 
-[NORA75](https://github.com/nora75)
+[NORA75](https://github.com/nora75)  
+[NIU Mini](https://kbdfans.cn/products/niu-mini-40-diy-kit)  
 
 # Concept
 
 I want to hit a key with US.  
 I don't like JIS.(but I am Japanese and not good at English.)  
 
-This keyboard size is only 40%.So it may have many layers.  
+This keyboard size is only 40%.So it need to have many layers.  
 
 # Feature
 
@@ -17,7 +18,13 @@ This keyboard size is only 40%.So it may have many layers.
     Use When you don't want to type any keys.  
 
 + Can move mouse,Scroll and Left click.
+
+    Keys like Vim.  
+    Such as f is Scroll Down like Vim <C-f>.and so on...  
+
 + Vim move cursor key support.
+
+    But only h j k l as cursor.  
 
 # Files
 
