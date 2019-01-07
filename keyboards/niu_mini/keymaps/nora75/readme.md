@@ -17,7 +17,7 @@ This keyboard size is only 40%.So it need to have many layers.
     Lock layer has no key.  
     Use When you don't want to type any keys.  
 
-+ Can move mouse,Scroll and Left click.
++ Can move mouse,Scroll and clicks.
 
     Keys like Vim.  
     Such as f is Scroll Down like Vim <C-f>.and so on...  
