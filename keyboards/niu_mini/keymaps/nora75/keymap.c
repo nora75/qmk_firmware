@@ -81,17 +81,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------------------------------------------------------------------------------.
      * |   Esc    |     Q    |     W    |     E    |     R    |     T    |     Y    |     U    |     I    |     O    |     P    |    BS    |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * | CTL_Tab  |     A    |     S    |     D    |     F    |     G    |     H    |     J    |     K    |     L    |     ;    |   Enter  |
+     * | CTL_Tab  |     A    |     S    |     D    |     F    |     G    |     H    |     J    |     K    |     L    |     ;    |    '     |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * | Sft_O_Sft|     Z    |     X    |     C    |     V    |     B    |     N    |     M    |     ,    |     .    |     /    |    '     |
+     * | Sft_O_Sft|     Z    |     X    |     C    |     V    |     B    |     N    |     M    |     ,    |     .    |     /    |    \     |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
      * |  SPECIAL |          |          |    Alt   |   Lower  |   Space  |   Enter  |   RAISE  |    GUI   |          |          |  TD_LOCK |
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [_DEFAULT] = LAYOUT_ortho_4x12(
             KC_ESC,                KC_Q,    KC_W,    KC_E,    KC_R,       KC_T,   KC_Y,   KC_U,       KC_I,    KC_O,     KC_P,    KC_BSPC,
-            LCTL_T(KC_TAB),        KC_A,    KC_S,    KC_D,    KC_F,       KC_G,   KC_H,   KC_J,       KC_K,    KC_L,     KC_SCLN, KC_ENT,
-            LSFT_T(OSM(MOD_LSFT)), KC_Z,    KC_X,    KC_C,    KC_V,       KC_B,   KC_N,   KC_M,       KC_COMM, KC_DOT,   KC_SLSH, KC_QUOT,
+            LCTL_T(KC_TAB),        KC_A,    KC_S,    KC_D,    KC_F,       KC_G,   KC_H,   KC_J,       KC_K,    KC_L,     KC_SCLN, KC_QUOT,
+            LSFT_T(OSM(MOD_LSFT)), KC_Z,    KC_X,    KC_C,    KC_V,       KC_B,   KC_N,   KC_M,       KC_COMM, KC_DOT,   KC_SLSH, KC_BSLS,
             TG(_SPECIAL),          XXXXXXX, XXXXXXX, KC_LALT, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_LGUI, XXXXXXX,  XXXXXXX, TD(TD_LOCK)
             ),
 
@@ -117,17 +117,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------------------------------------------------------------------------------.
      * |          |     1    |     2    |     3    |     4    |     5    |     6    |     7    |     8    |     9    |     0    |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |          |   PgDn   |   PgUp   |   HOME   |    END   |     `    |     \    |     -    |     =    |    [-{   |    ]-}   |          |
+     * |          |   PgDn   |   PgUp   |   HOME   |    END   |  Insert  |     `    |     -    |     =    |    [-{   |    ]-}   |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
-     * |          |          |          |          |  Insert  |          |          |          |          |          |          |          |
+     * |          |          |          |          |          |          |          |          |          |          |          |          |
      * |----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------|
      * |          |          |          |          |          |          |          |          |          |          |          |          |
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [_RAISE] = LAYOUT_ortho_4x12(
             _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,        KC_0,        _______,
-            _______, KC_PGDN, KC_PGUP, KC_HOME, KC_END,  KC_GRV,  KC_BSLS, KC_MINS, KC_EQL,  TD(TD_LBRC), TD(TD_RBRC), _______,
-            _______, _______, _______, _______, KC_INS,  _______, _______, _______, _______, _______,     _______,     _______,
+            _______, KC_PGDN, KC_PGUP, KC_HOME, KC_END,  KC_INS,  KC_GRV,  KC_MINS, KC_EQL,  TD(TD_LBRC), TD(TD_RBRC), _______,
+            _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,     _______,     _______,
             _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,     _______,     _______
             ),
 
@@ -144,10 +144,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------------------------------------------------------------------------------'
      */
     [_SPECIAL] = LAYOUT_ortho_4x12(
-            _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-            _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_D, KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX, _______,
-            _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-            _______, XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_BTN1, KC_BTN2, XXXXXXX, _______, XXXXXXX, XXXXXXX, TD(TD_RESET)
+            TO(_DEFAULT), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+            _______,      XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_D, KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX, _______,
+            _______,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_U, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+            _______,      XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_BTN1, KC_BTN2, XXXXXXX, _______, XXXXXXX, XXXXXXX, TD(TD_RESET)
             ),
 
     /* Layer 4 Lock Layer {{{2
