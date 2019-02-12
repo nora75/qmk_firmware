@@ -28,7 +28,7 @@ This file written many options.
 /* #define NO_ACTION_FUNCTION */
 
 /* tap dance */
-#define TAPPING_TERM 180 /* Time to change mod from tap in MOD-Tap key? */
+#define TAPPING_TERM 200 /* Time to change mod from tap in MOD-Tap key? */
 /* One Shot */
 #define ONESHOT_TIMEOUT 8000  /* Time (in ms) before the one shot key is released */
 /* Auto Shift */
