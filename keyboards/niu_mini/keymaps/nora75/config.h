@@ -30,9 +30,9 @@ This file written many options.
 /* tap dance */
 #define TAPPING_TERM 200 /* Time to change mod from tap in MOD-Tap key? */
 /* One Shot */
-#define ONESHOT_TIMEOUT 7500  /* Time (in ms) before the one shot key is released */
+#define ONESHOT_TIMEOUT 7000  /* Time (in ms) before the one shot key is released */
 /* Auto Shift */
-#define AUTO_SHIFT_TIMEOUT 170
+#define AUTO_SHIFT_TIMEOUT 150
 #define NO_AUTO_SHIFT_ALPHA /* It is not usefull when option is disabled */
 /* #define NO_AUTO_SHIFT_SPECIAL */
 /* LEADER KEY */
